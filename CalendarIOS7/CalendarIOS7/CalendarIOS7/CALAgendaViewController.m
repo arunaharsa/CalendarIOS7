@@ -302,7 +302,7 @@
     }
     
     if ([self.calendarCollectionView.collectionViewLayout isKindOfClass:[CALAgendaMonthCollectionViewLayout class]]) {
-        [self setDayModeForSelectedIndexPath:indexPath];
+//        [self setDayModeForSelectedIndexPath:indexPath];
     }
     else {
         BOOL canSelect = YES;

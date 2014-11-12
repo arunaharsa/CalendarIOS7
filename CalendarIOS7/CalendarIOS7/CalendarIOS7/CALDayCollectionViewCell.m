@@ -32,6 +32,18 @@
     [self removeEventsLayer];
 }
 
+- (void)setDateSelected:(BOOL)selected{
+    if (selected){
+        _dayLabel.textColor = [UIColor redColor];
+    } else{
+        _dayLabel.textColor = [UIColor blackColor];
+    }
+
+    if (_type == CALDayCollectionViewCellDayTypeToday){
+        _dayLabel.textColor = [UIColor whiteColor];
+    }
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -41,7 +53,7 @@
         
         _dayLabel = [[UILabel alloc] initWithFrame:self.contentView.bounds];
 		_dayLabel.textAlignment = NSTextAlignmentCenter;
-        [_dayLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:20.0f]];
+        [_dayLabel setFont:[UIFont systemFontOfSize:15]];
 
         _dayLabel.backgroundColor = [UIColor clearColor];
         [self addSubview:_dayLabel];
@@ -66,8 +78,8 @@
     
     if (style == CALDayCollectionViewCellDayUIStyleIOS7) {
         _separatorLayer = [[CALayer alloc] init];
-        [_separatorLayer setBackgroundColor:[UIColor lightGrayColor].CGColor];
-        [_separatorLayer setFrame:CGRectMake(-2.0f, 0.0f, 46.0f, 1.0f)];
+        [_separatorLayer setBackgroundColor:[UIColor colorWithWhite:0.98 alpha:1].CGColor];
+        [_separatorLayer setFrame:CGRectMake(-2.0f, 0.0f, 46.0f, 0.3f)];
         [self.layer addSublayer:_separatorLayer];
         self.contentViewColor = [UIColor clearColor];
         self.clipsToBounds = NO;
@@ -127,9 +139,10 @@
             self.dayLabel.text = @"";
             self.dayLabel.textColor = [UIColor whiteColor];
             self.todayLayer = [[CALayer alloc] init];
-            [self.todayLayer setFrame:CGRectMake(6.0f, 6.0f, 32.0f, 32.0f)];
+            CGFloat circleSize = self.bounds.size.height - 1;
+            [self.todayLayer setFrame:CGRectMake((self.bounds.size.width - circleSize)/2, 1.0f, circleSize, circleSize)];
             [self.todayLayer setBackgroundColor:[UIColor redColor].CGColor];
-            [self.todayLayer setCornerRadius:16.0f];
+            [self.todayLayer setCornerRadius:circleSize/2];
             [self.contentView.layer addSublayer:self.todayLayer];
             [self.contentView setBackgroundColor:self.contentViewColor];
             [self.separatorLayer setBackgroundColor:[UIColor lightGrayColor].CGColor];

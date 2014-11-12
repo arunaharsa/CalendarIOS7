@@ -26,6 +26,7 @@ typedef NS_ENUM(NSInteger,  CALDayCollectionViewCellDayUIStyle) {
 @property (assign, nonatomic) CALDayCollectionViewCellDayType type;
 @property (assign, nonatomic) CALDayCollectionViewCellDayUIStyle style;
 
+- (void)setDateSelected:(BOOL)selected;
 - (void)updateCellWithDate:(NSDate *)date;
 - (void)updateCellWithDate:(NSDate *)date andEvents:(NSInteger)nbEvents;
 

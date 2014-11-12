@@ -26,7 +26,7 @@ static NSString * const CALAgendaMonthCollectionViewLayoutHeader = @"CALAgendaMo
 		
 		CGFloat minSpacingWidth = 1.;
 		CGFloat maxWidth = floor((width - minSpacingWidth * 6) / 7.);
-		self.itemSize = CGSizeMake(maxWidth, maxWidth);        
+		self.itemSize = CGSizeMake(maxWidth, maxWidth *0.5);
         self.minimumLineSpacing = (width - (maxWidth * 7.)) / 6.;
         self.minimumInteritemSpacing = self.minimumLineSpacing;
     }
@@ -137,7 +137,7 @@ static NSString * const CALAgendaMonthCollectionViewLayoutHeader = @"CALAgendaMo
         NSIndexPath *lastHeaderIndexPath = [NSIndexPath indexPathForRow:0 inSection:numOfSections-1];
         UICollectionViewLayoutAttributes *lastLayoutAttributes = [self layoutAttributesForSupplementaryViewOfKind:UICollectionElementKindSectionHeader atIndexPath:lastHeaderIndexPath];
         CGSize contentSize = CGSizeMake(CGRectGetMaxX(lastLayoutAttributes.frame),CGRectGetMaxY(lastLayoutAttributes.frame) + 6*self.itemSize.height);
-        JMOLog(@"COntent size -> %@", NSStringFromCGSize(contentSize));
+//        JMOLog(@"COntent size -> %@", NSStringFromCGSize(contentSize));
         return contentSize;
     }
     else {

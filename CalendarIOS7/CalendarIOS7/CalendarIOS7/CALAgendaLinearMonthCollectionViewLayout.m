@@ -61,7 +61,7 @@ static NSString * const CALAgendaMonthCollectionViewLayoutCell = @"CALAgendaMont
             [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
             itemAttributes.frame = [self frameForItemAtIndexPath:indexPath previousRect:previousRect previousIndexPath:previousIndexPath];
             previousRect = itemAttributes.frame;
-            JMOLog(@"indexPath(%@) -> %@",indexPath, NSStringFromCGRect(previousRect));
+//            JMOLog(@"indexPath(%@) -> %@",indexPath, NSStringFromCGRect(previousRect));
             cellLayoutInfo[indexPath] = itemAttributes;
             previousIndexPath = indexPath;
         }
@@ -98,7 +98,7 @@ static NSString * const CALAgendaMonthCollectionViewLayoutCell = @"CALAgendaMont
         //compute the worst case
         NSIndexPath *lastIndexPath = [NSIndexPath indexPathForRow:[self.collectionView numberOfItemsInSection:[self.collectionView numberOfSections]-1]-1 inSection:[self.collectionView numberOfSections]-1];
         UICollectionViewLayoutAttributes *itemAttributes = self.layoutInfo[CALAgendaMonthCollectionViewLayoutCell][lastIndexPath];
-        JMOLog(@"COntent size -> %@", NSStringFromCGSize(CGSizeMake(320.0f, itemAttributes.frame.origin.y + itemAttributes.frame.size.height)));
+//        JMOLog(@"COntent size -> %@", NSStringFromCGSize(CGSizeMake(320.0f, itemAttributes.frame.origin.y + itemAttributes.frame.size.height)));
         return CGSizeMake(320.0f, itemAttributes.frame.origin.y + itemAttributes.frame.size.height);
     }
     else {
